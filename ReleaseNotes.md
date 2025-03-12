@@ -2,6 +2,9 @@
 
 # Release-Notes 
 
+## Release 2.4.1
+* Add project description to pom.xml for publishing artefacts to Maven Central
+
 ## Release 2.4.0
 * Updated HAPI FHIR to 7.6.1
 * Add plugins to publish to Maven Central
