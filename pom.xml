@@ -6,9 +6,10 @@
 
     <groupId>de.gematik.demis</groupId>
     <artifactId>fhir-parser-library</artifactId>
-    <version>2.4.0</version>
+    <version>2.4.1</version>
     <packaging>jar</packaging>
     <name>fhir-parser-library</name>
+    <description>This library provides necessary dependencies to work with HAPI FHIR classes and a simple parser FHIR notifications in json or xml.</description>
     <url>https://github.com/gematik/DEMIS-FHIR-Parser-Library</url>
 
     <licenses>
