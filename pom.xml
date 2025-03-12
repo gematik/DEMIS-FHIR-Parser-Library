@@ -6,9 +6,10 @@
 
     <groupId>de.gematik.demis</groupId>
     <artifactId>fhir-parser-library</artifactId>
-    <version>1.0.8-SNAPSHOT</version>
+    <version>2.4.0</version>
     <packaging>jar</packaging>
     <name>fhir-parser-library</name>
+    <url>https://github.com/gematik/DEMIS-FHIR-Parser-Library</url>
 
     <licenses>
         <license>
@@ -18,20 +19,19 @@
     </licenses>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <sonar.exclusions>
-        </sonar.exclusions>
-        <hapi.version>6.6.2</hapi.version>
-        <hl7.fhir.version>6.0.25</hl7.fhir.version>
-        <jackson.version>2.15.3</jackson.version>
-        <compiler.plugin.version>3.11.0</compiler.plugin.version>
-        <asm.version>9.6</asm.version>
-        <fmt.maven.plugin.version>2.21.1</fmt.maven.plugin.version>
-        <enforcer.plugin.version>3.4.1</enforcer.plugin.version>
-        <surefire.plugin.version>3.2.1</surefire.plugin.version>
-        <jacoco.plugin.version>0.8.11</jacoco.plugin.version>
-        <guava.version>32.1.3-jre</guava.version>
+        <version.maven.javadoc>3.11.2</version.maven.javadoc>
+        <version.maven-compiler-plugin>3.14.0</version.maven-compiler-plugin>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <hapi.version>7.6.1</hapi.version>
+        <hl7.version>6.5.15</hl7.version>
+        <jackson.version>2.18.3</jackson.version>
+        <asm.version>9.7.1</asm.version>
+        <fmt.maven.plugin.version>2.25</fmt.maven.plugin.version>
+        <enforcer.plugin.version>3.5.0</enforcer.plugin.version>
+        <surefire.plugin.version>3.5.2</surefire.plugin.version>
+        <jacoco.plugin.version>0.8.12</jacoco.plugin.version>
+        <guava.version>33.4.0-jre</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -52,34 +52,34 @@
                 <version>${jackson.version}</version>
             </dependency>
             <dependency>
-                <groupId>ca.uhn.hapi.fhir</groupId>
-                <artifactId>org.hl7.fhir.utilities</artifactId>
-                <version>${hl7.fhir.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ca.uhn.hapi.fhir</groupId>
-                <artifactId>org.hl7.fhir.r4</artifactId>
-                <version>${hl7.fhir.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ca.uhn.hapi.fhir</groupId>
-                <artifactId>hapi-fhir-base</artifactId>
-                <version>${hapi.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ca.uhn.hapi.fhir</groupId>
-                <artifactId>hapi-fhir-structures-r4</artifactId>
-                <version>${hapi.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>com.squareup.okio</groupId>
                 <artifactId>okio</artifactId>
-                <version>3.6.0</version>
+                <version>3.10.2</version>
             </dependency>
             <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
                 <version>4.12.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.17.0</version>
+            </dependency>
+            <dependency>
+                <groupId>ca.uhn.hapi.fhir</groupId>
+                <artifactId>org.hl7.fhir.r4</artifactId>
+                <version>${hl7.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ca.uhn.hapi.fhir</groupId>
+                <artifactId>org.hl7.fhir.utilities</artifactId>
+                <version>${hl7.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.18.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -88,24 +88,7 @@
         <dependency>
             <groupId>ca.uhn.hapi.fhir</groupId>
             <artifactId>hapi-fhir-structures-r4</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>ca.uhn.hapi.fhir</groupId>
-                    <artifactId>org.hl7.fhir.utilities</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>ca.uhn.hapi.fhir</groupId>
-                    <artifactId>hapi-fhir-base</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>ca.uhn.hapi.fhir</groupId>
-                    <artifactId>org.hl7.fhir.r4</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>ca.uhn.hapi.fhir</groupId>
-            <artifactId>org.hl7.fhir.utilities</artifactId>
+            <version>${hapi.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>ca.uhn.hapi.fhir</groupId>
@@ -113,35 +96,82 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
         <dependency>
             <groupId>ca.uhn.hapi.fhir</groupId>
-            <artifactId>org.hl7.fhir.r4</artifactId>
-            <scope>compile</scope>
+            <artifactId>hapi-fhir-base</artifactId>
+            <version>${hapi.version}</version>
         </dependency>
-
 
         <!--Test-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.0</version>
+            <version>5.11.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.24.2</version>
+            <version>3.27.3</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
-
 
     <build>
         <finalName>fhir-parser-library</finalName>
         <plugins>
-            <!-- Enforce Rules -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>2.5.0</version>
+                <configuration>
+                    <licenseName>eupl_v1_2</licenseName>
+                    <inceptionYear>2025</inceptionYear>
+                    <organizationName>gematik GmbH</organizationName>
+                    <licenseResolver>classpath://copyright-header/eupl-license</licenseResolver>
+                    <failOnMissingHeader>true</failOnMissingHeader>
+                    <failOnNotUptodateHeader>true</failOnNotUptodateHeader>
+                    <canUpdateCopyright>true</canUpdateCopyright>
+                    <licensesOutputDirectory>${project.basedir}/third-party-licenses</licensesOutputDirectory>
+                    <licensesOutputFile>${project.basedir}/third-party-licenses/licenses.xml</licensesOutputFile>
+                    <forceDownload>false</forceDownload>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
+                    <excludes>
+                        <exclude>**/generated/**</exclude>
+                    </excludes>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>de.gematik</groupId>
+                        <artifactId>ospo-resources</artifactId>
+                        <version>1.1.0</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>download-licenses</id>
+                        <goals>
+                            <goal>download-licenses</goal>
+                        </goals>
+                        <phase>none</phase>
+                    </execution>
+                    <execution>
+                        <id>update-file-header</id>
+                        <goals>
+                            <goal>update-file-header</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>check-file-header</id>
+                        <goals>
+                            <goal>check-file-header</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
@@ -172,7 +202,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.3.1</version>
             </plugin>
 
             <plugin>
@@ -249,7 +279,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler.plugin.version}</version>
+                <version>${version.maven-compiler-plugin}</version>
                 <executions>
                     <execution>
                         <id>default-compile</id>
@@ -278,31 +308,30 @@
             </plugin>
         </plugins>
         <pluginManagement>
-            <!-- Call mvn notice:generate to generate a new NOTICE file, when dependencies
-              were changed. Also be sure to run the build on a JDK 8 (contrary to the regular
-              build, which requires JDK 11), e.g set environment variable JAVA_HOME to
-              the root directory of a JDK 8 before starting the build. -->
             <plugins>
                 <!-- used to generate the NOTICE file -->
                 <plugin>
                     <groupId>org.jasig.maven</groupId>
-                    <artifactId>maven-notice-plugin</artifactId>
-                    <version>1.1.0</version>
+                    <artifactId>notice-maven-plugin</artifactId>
+                    <version>2.0.0</version>
                     <configuration>
                         <noticeTemplate>NOTICE.template</noticeTemplate>
                         <outputDir>.</outputDir>
                     </configuration>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.glassfish.jaxb</groupId>
-                            <artifactId>jaxb-runtime</artifactId>
-                            <version>2.3.8</version>
-                        </dependency>
-                    </dependencies>
+                    <executions>
+                        <execution>
+                            <id>notice-generation</id>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <phase>generate-sources</phase>
+                        </execution>
+                    </executions>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
+
     <distributionManagement>
         <repository>
             <id>releases</id>
@@ -313,4 +342,101 @@
             <url>${snapshotDeploymentRepository}</url>
         </snapshotRepository>
     </distributionManagement>
+
+    <profiles>
+        <profile>
+            <id>external</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.2.7</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.7.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                            <stagingProgressTimeoutMinutes>20</stagingProgressTimeoutMinutes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.3.1</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>${version.maven.javadoc}</version>
+                        <configuration>
+                            <doclint>none</doclint>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <scm>
+        <url>https://github.com/gematik/DEMIS-FHIR-Parser-Library</url>
+        <connection>scm:git:git://github.com/gematik/DEMIS-FHIR-Parser-Library.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:gematik/DEMIS-FHIR-Parser-Library.git</developerConnection>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/gematik/DEMIS-FHIR-Parser-Library</url>
+    </issueManagement>
+
+    <organization>
+        <name>gematik GmbH</name>
+        <url>https://www.gematik.de</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>gematik</name>
+            <email>software-development@gematik.de</email>
+            <url>https://gematik.github.io/</url>
+            <organization>gematik GmbH</organization>
+            <organizationUrl>https://www.gematik.de/</organizationUrl>
+        </developer>
+    </developers>
 </project>

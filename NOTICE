@@ -14,11 +14,10 @@ See the Licence for the specific language governing permissions and limitations 
 
 This project includes:
   Apache Commons Codec under Apache License, Version 2.0
-  Apache Commons IO under Apache License, Version 2.0
-  Apache Commons Lang under Apache License, Version 2.0
-  Apache Commons Net under Apache License, Version 2.0
+  Apache Commons IO under Apache-2.0
+  Apache Commons Lang under Apache-2.0
   Apache Commons Text under Apache License, Version 2.0
-  AssertJ Core under Apache License, Version 2.0
+  AssertJ Core under Apache-2.0
   Byte Buddy (without dependencies) under Apache License, Version 2.0
   Checker Qual under The MIT License
   error-prone annotations under Apache 2.0
@@ -36,9 +35,12 @@ This project includes:
   Jackson-annotations under The Apache Software License, Version 2.0
   Jackson-core under The Apache Software License, Version 2.0
   jackson-databind under The Apache Software License, Version 2.0
+  Jakarta Annotations API under EPL 2.0 or GPL2 w/ CPE
   JCL 1.2 implemented over SLF4J under Apache License, Version 2.0
   JUnit Jupiter API under Eclipse Public License v2.0
   JUnit Platform Commons under Eclipse Public License v2.0
+  OpenTelemetry Instrumentation for Java under The Apache License, Version 2.0
+  OpenTelemetry Java under The Apache License, Version 2.0
   org.apiguardian:apiguardian-api under The Apache License, Version 2.0
   org.hl7.fhir.r4 under Apache Software License 2.0
   org.hl7.fhir.utilities under Apache Software License 2.0

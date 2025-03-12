@@ -1,6 +1,11 @@
-/*
- * Copyright [2023], gematik GmbH
- *
+package de.gematik.demis.fhirparserlibrary;
+
+/*-
+ * #%L
+ * fhir-parser-library
+ * %%
+ * Copyright (C) 2025 gematik GmbH
+ * %%
  * Licensed under the EUPL, Version 1.2 or - as soon they will be approved by the
  * European Commission – subsequent versions of the EUPL (the "Licence").
  * You may not use this work except in compliance with the Licence.
@@ -14,36 +19,28 @@
  * In case of changes by gematik find details in the "Readme" file.
  *
  * See the Licence for the specific language governing permissions and limitations under the Licence.
+ * #L%
  */
 
-package de.gematik.demis.fhirparserlibrary;
-
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
 class MessageTypeTest {
 
   @Test
-  void shouldReturnXMLEnumForXmlAsString() {
-
-    assertThat(MessageType.getMessageType("xml")).isEqualTo(MessageType.XML);
-    assertThat(MessageType.getMessageType("XML")).isEqualTo(MessageType.XML);
-    assertThat(MessageType.getMessageType("xMl")).isEqualTo(MessageType.XML);
-    assertThat(MessageType.getMessageType("XmL")).isEqualTo(MessageType.XML);
+  public void testGetValueReturnsUppercase() {
+    assertThat(MessageType.JSON.getValue()).isEqualTo("JSON");
+    assertThat(MessageType.XML.getValue()).isEqualTo("XML");
   }
 
   @Test
-  void shouldReturnJsonEnumForJsonAsString() {
-
+  public void testGetMessageTypeFromString() {
     assertThat(MessageType.getMessageType("json")).isEqualTo(MessageType.JSON);
-    assertThat(MessageType.getMessageType("JSON")).isEqualTo(MessageType.JSON);
-    assertThat(MessageType.getMessageType("jSoN")).isEqualTo(MessageType.JSON);
-    assertThat(MessageType.getMessageType("JsOn")).isEqualTo(MessageType.JSON);
-  }
-
-  @Test
-  void shouldReturnJsonAsStandardCase() {
-    assertThat(MessageType.getMessageType("foobar")).isEqualTo(MessageType.JSON);
+    assertThat(MessageType.getMessageType("xml")).isEqualTo(MessageType.XML);
+    assertThatThrownBy(() -> MessageType.getMessageType("unknown"))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessageContaining("Unknown content type");
   }
 }

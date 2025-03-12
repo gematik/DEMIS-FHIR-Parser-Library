@@ -1,7 +1,25 @@
 <img align="right" width="250" height="47" src="media/Gematik_Logo_Flag.png"/> <br/>    
 
-# Release-Notes demis-commons
+# Release-Notes 
 
-## Release 1.0.8 (2023-11-15)
+## Release 2.4.0
+* Updated HAPI FHIR to 7.6.1
+* Add plugins to publish to Maven Central
+* Updated dependencies
 
-initial Release of fhir paser library
+## Release 2.2.0
+* Updated HAPI FHIR to 7.4.0
+
+## Release 2.1.0
+* Updated HAPI FHIR to 7.2
+
+## Release 2.0.0
+* Updated HAPI FHIR to 7.0
+
+## Release 1.1.0
+* Removed dependency on Spring-Web
+* Updated HAPI FHIR to 6.10.3
+* Updated Project to Java 21
+
+## Release 1.0.8
+* initial Release of fhir paser library
