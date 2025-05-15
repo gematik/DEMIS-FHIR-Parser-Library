@@ -2,6 +2,10 @@
 
 # Release-Notes 
 
+## Release 2.4.2
+* Updated ospo-resources for adding additional notes and disclaimer
+* Udpated/clean up internal dependencies
+
 ## Release 2.4.1
 * Add project description to pom.xml for publishing artefacts to Maven Central
 

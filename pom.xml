@@ -6,7 +6,7 @@
 
     <groupId>de.gematik.demis</groupId>
     <artifactId>fhir-parser-library</artifactId>
-    <version>2.4.1</version>
+    <version>2.4.2</version>
     <packaging>jar</packaging>
     <name>fhir-parser-library</name>
     <description>This library provides necessary dependencies to work with HAPI FHIR classes and a simple parser FHIR notifications in json or xml.</description>
@@ -25,14 +25,14 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <hapi.version>7.6.1</hapi.version>
-        <hl7.version>6.5.15</hl7.version>
+        <hl7.version>6.5.21</hl7.version>
         <jackson.version>2.18.3</jackson.version>
-        <asm.version>9.7.1</asm.version>
+        <asm.version>9.8</asm.version>
         <fmt.maven.plugin.version>2.25</fmt.maven.plugin.version>
         <enforcer.plugin.version>3.5.0</enforcer.plugin.version>
         <surefire.plugin.version>3.5.2</surefire.plugin.version>
-        <jacoco.plugin.version>0.8.12</jacoco.plugin.version>
-        <guava.version>33.4.0-jre</guava.version>
+        <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
+        <guava.version>33.4.8-jre</guava.version>
     </properties>
 
     <dependencyManagement>
@@ -68,6 +68,24 @@
                 <version>3.17.0</version>
             </dependency>
             <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>2.18.0</version>
+            </dependency>
+            <!-- HAPI FHIR Dependencies -->
+            <dependency>
+                <groupId>ca.uhn.hapi.fhir</groupId>
+                <artifactId>hapi-fhir-base</artifactId>
+                <version>${hapi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ca.uhn.hapi.fhir</groupId>
+                <artifactId>hapi-fhir-structures-r4</artifactId>
+                <version>${hapi.version}</version>
+            </dependency>
+
+            <!-- HL7 Dependencies -->
+            <dependency>
                 <groupId>ca.uhn.hapi.fhir</groupId>
                 <artifactId>org.hl7.fhir.r4</artifactId>
                 <version>${hl7.version}</version>
@@ -77,30 +95,32 @@
                 <artifactId>org.hl7.fhir.utilities</artifactId>
                 <version>${hl7.version}</version>
             </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>2.18.0</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+        <!-- HAPI FHIR -->
         <dependency>
             <groupId>ca.uhn.hapi.fhir</groupId>
             <artifactId>hapi-fhir-structures-r4</artifactId>
             <version>${hapi.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>ca.uhn.hapi.fhir</groupId>
-                    <artifactId>hapi-fhir-base</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>ca.uhn.hapi.fhir</groupId>
             <artifactId>hapi-fhir-base</artifactId>
             <version>${hapi.version}</version>
+        </dependency>
+
+        <!-- HL7 -->
+        <dependency>
+            <groupId>ca.uhn.hapi.fhir</groupId>
+            <artifactId>org.hl7.fhir.r4</artifactId>
+            <version>${hl7.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>ca.uhn.hapi.fhir</groupId>
+            <artifactId>org.hl7.fhir.utilities</artifactId>
+            <version>${hl7.version}</version>
         </dependency>
 
         <!--Test-->
@@ -147,7 +167,7 @@
                     <dependency>
                         <groupId>de.gematik</groupId>
                         <artifactId>ospo-resources</artifactId>
-                        <version>1.1.0</version>
+                        <version>1.2.0</version>
                     </dependency>
                 </dependencies>
                 <executions>
