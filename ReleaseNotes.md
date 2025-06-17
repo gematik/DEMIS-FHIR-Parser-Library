@@ -2,6 +2,13 @@
 
 # Release-Notes 
 
+## Release 2.5.1
+* Updated dependencies
+* Fix release for Maven Central
+
+## Release 2.5.0
+* Updated HAPI FHIR to 8.2.0
+
 ## Release 2.4.2
 * Updated ospo-resources for adding additional notes and disclaimer
 * Udpated/clean up internal dependencies
