@@ -6,7 +6,7 @@
 
     <groupId>de.gematik.demis</groupId>
     <artifactId>fhir-parser-library</artifactId>
-    <version>2.5.0</version>
+    <version>2.6.0</version>
     <packaging>jar</packaging>
     <name>fhir-parser-library</name>
     <description>This library provides necessary dependencies to work with HAPI FHIR classes and a simple parser FHIR notifications in json or xml.</description>
@@ -20,19 +20,20 @@
     </licenses>
 
     <properties>
-        <version.maven.javadoc>3.11.2</version.maven.javadoc>
+        <version.maven.javadoc>3.11.3</version.maven.javadoc>
         <version.maven-compiler-plugin>3.14.0</version.maven-compiler-plugin>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <hapi.version>8.2.0</hapi.version>
-        <hl7.version>6.5.18</hl7.version>
-        <jackson.version>2.19.1</jackson.version>
+        <hapi.version>8.4.0</hapi.version>
+        <hl7.version>6.5.27</hl7.version>
+        <jackson.version>2.19.2</jackson.version>
         <asm.version>9.8</asm.version>
         <fmt.maven.plugin.version>2.27</fmt.maven.plugin.version>
-        <enforcer.plugin.version>3.5.0</enforcer.plugin.version>
+        <enforcer.plugin.version>3.6.1</enforcer.plugin.version>
         <surefire.plugin.version>3.5.3</surefire.plugin.version>
         <jacoco.plugin.version>0.8.13</jacoco.plugin.version>
         <guava.version>33.4.8-jre</guava.version>
+        <slf4j.version>2.0.17</slf4j.version>
     </properties>
 
     <dependencyManagement>
@@ -55,12 +56,12 @@
             <dependency>
                 <groupId>com.squareup.okio</groupId>
                 <artifactId>okio</artifactId>
-                <version>3.13.0</version>
+                <version>3.16.0</version>
             </dependency>
             <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
-                <version>4.12.0</version>
+                <version>5.1.0</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -75,12 +76,12 @@
             <dependency>
                 <artifactId>commons-codec</artifactId>
                 <groupId>commons-codec</groupId>
-                <version>1.18.0</version>
+                <version>1.19.0</version>
             </dependency>
             <dependency>
                 <groupId>com.google.errorprone</groupId>
                 <artifactId>error_prone_annotations</artifactId>
-                <version>2.38.0</version>
+                <version>2.41.0</version>
             </dependency>
             <!-- HAPI FHIR Dependencies -->
             <dependency>
@@ -103,6 +104,16 @@
                 <groupId>ca.uhn.hapi.fhir</groupId>
                 <artifactId>org.hl7.fhir.utilities</artifactId>
                 <version>${hl7.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>${slf4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -136,13 +147,13 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.13.1</version>
+            <version>5.13.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.27.3</version>
+            <version>3.27.4</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -153,7 +164,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>license-maven-plugin</artifactId>
-                <version>2.5.0</version>
+                <version>2.6.0</version>
                 <configuration>
                     <licenseName>eupl_v1_2</licenseName>
                     <inceptionYear>2025</inceptionYear>
@@ -381,7 +392,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.2.7</version>
+                        <version>3.2.8</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -401,7 +412,7 @@
                     <plugin>
                         <groupId>org.sonatype.central</groupId>
                         <artifactId>central-publishing-maven-plugin</artifactId>
-                        <version>0.7.0</version>
+                        <version>0.8.0</version>
                         <extensions>true</extensions>
                         <configuration>
                             <publishingServerId>central</publishingServerId>
