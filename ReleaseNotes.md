@@ -2,6 +2,9 @@
 
 # Release-Notes 
 
+## Release 2.6.1
+* Updated dependencies
+
 ## Release 2.6.0
 * Updated dependencies
 * Fix release for Maven Central
