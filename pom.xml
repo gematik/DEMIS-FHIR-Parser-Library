@@ -6,7 +6,7 @@
 
     <groupId>de.gematik.demis</groupId>
     <artifactId>fhir-parser-library</artifactId>
-    <version>2.6.2</version>
+    <version>2.6.3</version>
     <packaging>jar</packaging>
     <name>fhir-parser-library</name>
     <description>This library provides necessary dependencies to work with HAPI FHIR classes and a simple parser FHIR notifications in json or xml.</description>
@@ -24,8 +24,8 @@
         <version.maven-compiler-plugin>3.14.1</version.maven-compiler-plugin>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <hapi.version>8.4.0</hapi.version>
-        <hl7.version>6.5.27</hl7.version>
+        <hapi.version>8.6.0</hapi.version>
+        <hl7.version>6.6.7</hl7.version>
         <jackson.version>2.20.1</jackson.version>
         <asm.version>9.9</asm.version>
         <fmt.maven.plugin.version>2.29</fmt.maven.plugin.version>
@@ -56,17 +56,17 @@
             <dependency>
                 <groupId>com.squareup.okio</groupId>
                 <artifactId>okio</artifactId>
-                <version>3.16.2</version>
+                <version>3.16.4</version>
             </dependency>
             <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
                 <artifactId>okhttp</artifactId>
-                <version>5.3.0</version>
+                <version>5.3.2</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
-                <version>3.19.0</version>
+                <version>3.20.0</version>
             </dependency>
             <dependency>
                 <groupId>commons-io</groupId>
@@ -81,7 +81,7 @@
             <dependency>
                 <groupId>com.google.errorprone</groupId>
                 <artifactId>error_prone_annotations</artifactId>
-                <version>2.44.0</version>
+                <version>2.45.0</version>
             </dependency>
             <!-- HAPI FHIR Dependencies -->
             <dependency>
@@ -243,7 +243,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.1</version>
+                <version>3.4.0</version>
             </plugin>
 
             <plugin>
