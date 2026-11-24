@@ -2,12 +2,15 @@
 
 # Release-Notes 
 
+## Release 2.8.1
+
 ## Release 2.8.0
 - added ReleaseNotes check to pipelines
 - Update to hapi.fhir 8.10.3
 - Update to hl7 6.9.12
 - update guava to 33.8.0-jre
 - fix dependency convergence issues with hapi.fhir and hl7 versions by pinning open telemetry versions to 2.27.0 and 1.61.0 and removing okhttp and okio dependencies
+- update maven-publishing-plugin to 0.12.0
 
 ## Release 2.7.0
 - Updated to Java 25
